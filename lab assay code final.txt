@@ -1,0 +1,431 @@
+#Condensed code
+
+library(plyr)
+library(Rmisc)
+library(ggplot2)
+
+nov <- read.table("labmortnov18.txt", header=T, sep="\t")
+tgn <- summarySE(nov, measurevar="Pctdead1hr", groupvars=c("Chemical"))
+
+pd <- position_dodge(0.3)
+attach(nov)
+
+#organize by level
+positiona <- c("Actara", "Asana", "Brigade", "Pyganic","Entrust", "Admire", 
+ "Exirel", "Grandevo", "Altacor", "UTC")
+positiona <- factor(nov$Chemical, levels=c("Actara", "Asana", "Brigade", "Pyganic","Entrust", "Admire", 
+ "Exirel", "Grandevo", "Altacor", "UTC"))
+tgna <- summarySE(nov, measurevar="Pctdead1hr", groupvars=c("positiona"))
+
+izd<- ggplot(tgna, aes(x=positiona, y = Pctdead1hr)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +coord_cartesian(ylim=c(0,1))+
+geom_errorbar(aes(ymin=Pctdead1hr-se, ymax=Pctdead1hr+se))+
+theme(axis.title.x=element_blank())
+izd1 = izd + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+izd2 = izd1 + theme(axis.text.y = element_text(size=12))
+izd3 = izd2 + theme(legend.text = element_text(size = 14, face = "bold"))
+infinal = izd3 + ggtitle("1 hour") + 
+     theme(plot.title = element_text(lineheight=.8, face="bold", hjust=0.5))
+#figure of 1 hr dead november
+tiff("1hrdeadlabnovse.tiff", width=6, height =6, res=300, units='in')
+izd3
+dev.off()
+
+#with CI
+izci<- ggplot(tgna, aes(x=positiona, y = Pctdead1hr)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion Mortality") + theme_bw() + coord_cartesian(ylim=c(0,1))+
+geom_errorbar(aes(ymin=Pctdead1hr-ci, ymax=Pctdead1hr+ci))+
+theme(axis.title.x=element_blank())
+izdci1 = izci + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+izdci2 = izdci1 + theme(axis.text.y = element_text(size=12))
+izdci3 = izdci2 + theme(legend.text = element_text(size = 14, face = "bold"))
+
+tiff("1hrdeadlabnovci1128.tiff", width=6, height =6, res=300, units='in')
+izdci3
+dev.off()
+
+
+#GLMM
+library(nlme)
+library(car)
+library(MASS)
+hr1 <- glmmPQL(Pctdead1hr ~ Chemical, random=~1|Date, family = binomial,
+    data = nov, verbose = FALSE)
+
+hr1a <- glmmPQL(Pctdead1hr ~ Chemical, random=~1|Date, family = binomial,
+    data = nov)
+
+utc1st <- factor(nov$Chemical, levels=c("UTC", "Actara", "Asana", "Brigade", "Pyganic","Entrust", "Admire", 
+ "Exirel", "Grandevo", "Altacor"))
+
+modrand <- glmmPQL(Pctdead1hr ~ utc1st, random=~1|Date, family = binomial,data = nov)
+modfixed <- glm(Pctdead1hr ~ utc1st,family = binomial, data = nov)
+
+postrand <- glht(modrand, linfct = mcp(utc1st="Tukey"))
+postrand1 <- glht(modrand, linfct = mcp(utc1st="Dunnett"))
+postfixed<- glht(modfixed, linfct = mcp(utc1st="Tukey"))
+postfixed1<- glht(modfixed, linfct = mcp(utc1st="Dunnett"))
+
+tuk.cld <-cld(postrand)
+
+library(emmeans)
+t = emmeans(modrand, list(pairwise~utc1st), adjust = "tukey")
+cld(t, Letter="abcdefg")
+#No date included
+library(agricolae)
+modelb<-aov(Pctdead1hr~Chemical, data=nov)
+out <- HSD.test(modelb,"Chemical", group=TRUE,console=TRUE,
+main="1 hour mortality - lab")
+
+a        Brigade         0.8683 
+a        Asana           0.7952 
+a        Pyganic         0.7901 
+a        Actara          0.7889 
+b        Exirel          0.4042 
+bc       Admire          0.2886 
+bcd      Grandevo        0.2 
+cd       Entrust         0.08039 
+d        Altacor         0.03 
+d        UTC             0.01619 
+
+#####################
+#24 hour dead
+tgn24 <- summarySE(nov, measurevar="Pctdead24hr", groupvars=c("positiona"))
+#with CI
+izci24<- ggplot(tgn24, aes(x=positiona, y = Pctdead24hr)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +coord_cartesian(ylim=c(0,1))+
+geom_errorbar(aes(ymin=Pctdead24hr-ci, ymax=Pctdead24hr+ci))+
+theme(axis.title.x=element_blank())
+iz24cia = iz24ci + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+iz24cib = iz24cia + theme(axis.text.y = element_text(size=12))
+iz24cib = iz24cic + theme(legend.text = element_text(size = 14, face = "bold"))
+
+tiff("24hrdeadlabnovci1128.tiff", width=6, height =6, res=300, units='in')
+izdci3
+dev.off()
+
+#with se
+iz24se<- ggplot(tgn24, aes(x=positiona, y = Pctdead24hr)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead24hr-se, ymax=Pctdead24hr+se))+
+theme(axis.title.x=element_blank())
+iz24se1 = iz24se + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+iz24se2 = iz24se1 + theme(axis.text.y = element_text(size=12))
+iz24se3 = iz24se2 + theme(legend.text = element_text(size = 14, face = "bold"))
+outfinal = iz24se3 + ggtitle("24 hours") + 
+     theme(plot.title = element_text(lineheight=.8, face="bold", hjust=0.5))
+tiff("24hrdeadlabnovse.tiff", width=6, height =6, res=300, units='in')
+izdci3a
+dev.off()
+
+#####FIGURE UPDATE 3/27
+nova <- read.table("labmortnov18ai.txt", header=T, sep="\t")
+pd <- position_dodge(0.3)
+pabbrev <- factor(nova$Aiabbrev, levels=c("Thiam", "Esfen",
+ "Bifen", "Pyret","Spino", "Imid", 
+ "Cyant", "Chrom", "Chlor", "UTC"))
+positionai <- factor(nova$AI, levels=c("Thiamethoxam", "Esfenvalerate",
+ "Bifenthrin", "Pyrethrins","Spinosad", "Imidacloprid", 
+ "Cyantraniliprole", "Chromobacterium", "Chlorantraniliprole", "UTC"))
+nova1 = cbind(nova, positionai, pabbrev)
+
+tgnai <- summarySE(nova1, measurevar="Pctdead1hr", groupvars=c("pabbrev"))
+
+izd<- ggplot(tgnai, aes(x=pabbrev, y = Pctdead1hr)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +coord_cartesian(ylim=c(0,1))+
+geom_errorbar(aes(ymin=Pctdead1hr-se, ymax=Pctdead1hr+se))+
+theme(axis.title.x=element_blank())
+izd1 = izd + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+izd2 = izd1 + theme(axis.text.y = element_text(size=12))
+izd3 = izd2 + theme(legend.text = element_text(size = 14, face = "bold"))
+infinal = izd3 + ggtitle("1 hour") + 
+     theme(plot.title = element_text(lineheight=.8, face="bold", hjust=0.5))
+
+tgn24ai <- summarySE(nova1, measurevar="Pctdead24hr", groupvars=c("pabbrev"))
+iz24se<- ggplot(tgn24ai, aes(x=pabbrev, y = Pctdead24hr)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead24hr-se, ymax=Pctdead24hr+se))+
+theme(axis.title.x=element_blank())
+iz24se1 = iz24se + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+iz24se2 = iz24se1 + theme(axis.text.y = element_text(size=12))
+iz24se3 = iz24se2 + theme(legend.text = element_text(size = 14, face = "bold"))
+outfinal = iz24se3 + ggtitle("24 hours") + 
+     theme(plot.title = element_text(lineheight=.8, face="bold", hjust=0.5))
+# https://stackoverflow.com/questions/28755576/add-text-to-ggplot
+infinal1 = infinal + annotate("text", x=1, y=0.9, label="a")+
+annotate("text", x=2, y=0.9, label="a")+
+annotate("text", x=3, y=0.95, label="a")+
+annotate("text", x=4, y=0.9, label="a")+
+annotate("text", x=5, y=0.2, label="cde")+
+annotate("text", x=6, y=0.45, label="bc")+
+annotate("text", x=7, y=0.56, label="b")+
+annotate("text", x=8, y=0.40, label="bcd")+
+annotate("text", x=9, y=0.1, label="de")+
+annotate("text", x=10, y=0.1, label="e")
+
+
+outfinal1 = outfinal + annotate("text", x=1, y=1.05, label="a")+
+annotate("text", x=2, y=1.05, label="a")+
+annotate("text", x=3, y=1.05, label="a")+
+annotate("text", x=4, y=1.05, label="a")+
+annotate("text", x=5, y=1.05, label="a")+
+annotate("text", x=6, y=0.95, label="a")+
+annotate("text", x=7, y=0.95, label="a")+
+annotate("text", x=8, y=0.85, label="a")+
+annotate("text", x=9, y=0.52, label="b")+
+annotate("text", x=10, y=0.32, label="b")
+
+multiplot(infinal1, outfinal1)
+tiff("april5panelaifig.tiff", width=6, height =6, res=300, units='in')
+multiplot(infinal1, outfinal1)
+dev.off()
+
+modelc<-aov(Pctdead24hr~Chemical, data=nov)
+out <- HSD.test(modelc,"Chemical", group=TRUE,console=TRUE,
+main="24 hour mortality - lab")
+
+a        Actara          1 
+a        Asana           1 
+a        Brigade         1 
+a        Pyganic         1 
+a        Entrust         0.9314 
+ab       Admire          0.844 
+ab       Exirel          0.8217 
+b        Grandevo        0.6931 
+c        Altacor         0.3944 
+c        UTC             0.2256 
+
+modrand24 <- glmmPQL(Pctdead24hr ~ utc1st, random=~1|Date, family = binomial,data = nov)
+modfixed24 <- glm(Pctdead24hr ~ utc1st,family = binomial, data = nov)
+
+postrand24t <- glht(modrand24, linfct = mcp(utc1st="Tukey"))
+postrand24d <- glht(modrand24, linfct = mcp(utc1st="Dunnett"))
+postfixed24t<- glht(modfixed24, linfct = mcp(utc1st="Tukey"))
+postfixed24d<- glht(modfixed24, linfct = mcp(utc1st="Dunnett"))
+tuk.cld24 <-cld(postfixed24t)
+tuk.cld24r <-cld(postrand24t)
+# Make UTC first
+utc1st <- factor(nov$Chemical, levels=c("UTC", "Actara", "Asana", "Brigade", "Pyganic","Entrust", "Admire", 
+ "Exirel", "Grandevo", "Altacor"))
+nova = cbind(utc1st, nov)
+
+mdu = glm(Pctdead24hr~Chemical, data=nov, family=binomial)
+mdutc = glm(Pctdead24hr~utc1st, data=nova, family=binomial)
+Anova(mdu)
+library(multcomp)
+aa <- glht(mdu, linfct = mcp(Chemical="Tukey"))
+
+UTC - Entrust == 0      -3.841e+00  1.041e+00  -3.690    <0.01 **
+UTC - Exirel == 0       -2.761e+00  7.105e-01  -3.886    <0.01 **
+UTC - Grandevo == 0     -2.048e+00  6.634e-01  -3.087   0.0388 * 
+Entrust - Altacor == 0   3.037e+00  1.095e+00   2.773   0.0953 . 
+UTC - Admire == 0       -2.922e+00  7.505e-01  -3.893    <0.01 **
+
+mdua_dunn <- glht(mdutc, linfct = mcp(utc1st="Dunnett"))
+Linear Hypotheses:
+                     Estimate Std. Error z value Pr(>|z|)    
+Actara - UTC == 0     21.7993  5118.3169   0.004 1.000000    
+Asana - UTC == 0      21.7993  2996.9795   0.007 1.000000    
+Brigade - UTC == 0    21.7993  5606.8353   0.004 1.000000    
+Pyganic - UTC == 0    21.7993  4738.6407   0.005 1.000000    
+Entrust - UTC == 0     3.8412     1.0411   3.690 0.001996 ** 
+Admire - UTC == 0      2.9215     0.7505   3.893 0.000904 ***
+Exirel - UTC == 0      2.7609     0.7105   3.886 0.000919 ***
+Grandevo - UTC == 0    2.0480     0.6634   3.087 0.017751 *  
+Altacor - UTC == 0     0.8045     0.6653   1.209 0.887922    
+
+#something is off above
+# I think it relates to having 100% dead for 4 compounds and no variance. 
+
+daydead <- glmmPQL(Pctdead24hr ~ utc1st, random=~1|Date, family = binomial,
+    data = nova, verbose = FALSE)
+
+
+mdutc = glm(Pctdead24hr~utc1st, data=nova, family=binomial)
+modelutc1<-aov(Pctdead24hr~utc1st, data=nova)
+out <- HSD.test(modelutc1,"utc1st", group=TRUE,console=TRUE,
+main="24 hour mortality - lab")
+
+
+#####Field final
+tji <- read.table("fieldsurv18.txt", header=T, sep="\t")
+
+fd <- summarySE(tji, measurevar="Pctalive", groupvars=c("Treatment"))
+fm <- summarySE(tji, measurevar="Pctdead", groupvars=c("Treatment"))
+fds <- summarySE(tji, measurevar="Pctslugdead", groupvars=c("Treatment"))
+
+#reorder insecticides for figure
+fma <- factor(fm$Treatment, levels = c("Entrust", "Brigade", "Actara", "Admire",
+ "Asana", "Pyganic","Exirel","Altacor", "Grandevo", "UTC"))
+
+
+#Figure with standard error of mean (SEM)
+fizab<- ggplot(fm, aes(x=fma, y = Pctdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Mortality") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead-se, ymax=Pctdead+se))+
+theme(axis.title.x=element_blank())
+fiz1a = fizab + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2a = fiz1a + theme(axis.text.y = element_text(size=12))
+fiz3a = fiz2a + theme(legend.text = element_text(size = 14, face = "bold"))
+
+#Create figure with confidence intervals instead of SEM
+fizabc<- ggplot(fm, aes(x=fma, y = Pctdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead-ci, ymax=Pctdead+ci))+
+theme(axis.title.x=element_blank())
+fiz1ac = fizabc + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2ac = fiz1ac + theme(axis.text.y = element_text(size=12))
+fiz3ac = fiz2ac + theme(legend.text = element_text(size = 14, face = "bold"))
+
+##figure with proportion sluggish or dead
+fmd <- factor(fds$Treatment, levels = c("Entrust", "Brigade", "Actara", "Admire",
+ "Asana", "Pyganic","Exirel","Altacor", "Grandevo", "UTC"))
+fizabc<- ggplot(fds, aes(x=fmd, y = Pctslugdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Prop. dead or sluggish") + theme_bw() +
+geom_errorbar(aes(ymin=Pctslugdead-ci, ymax=Pctslugdead+ci))+
+theme(axis.title.x=element_blank())
+fiz1ac = fizabc + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2ac = fiz1ac + theme(axis.text.y = element_text(size=12))
+fiz3ac = fiz2ac + theme(legend.text = element_text(size = 14, face = "bold"))
+
+
+#Figure separating organic and conventional products for pct dead
+#Is there a way to color organics 1 way and conventional another
+fmorg <- factor(fm$Treatment, levels = c("Entrust","Pyganic","Grandevo", "Brigade", "Actara", "Admire",
+ "Asana", "Exirel","Altacor",  "UTC"))
+
+org<- ggplot(fm, aes(x=fmorg, y = Pctdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Mortality") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead-ci, ymax=Pctdead+ci))+
+theme(axis.title.x=element_blank())
+or1 = org + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+or2 = or1 + theme(axis.text.y = element_text(size=12))
+or3 = or2 + theme(legend.text = element_text(size = 14, face = "bold"))
+
+###Statistical comparison of mortality
+attach(tji)
+
+md1 = glm(Pctdead~Treatment, data=tji, family=binomial)
+
+#Make utc the default
+utrt <- factor(Treatment, levels=c("UTC", "Actara", "Asana", "Brigade", "Pyganic","Entrust", "Admire", 
+ "Exirel", "Grandevo", "Altacor"))
+
+tji2 = cbind(utrt, tji)
+md2 = glm(Pctdead~utrt, data=tji2, family=binomial)
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   -0.9598     0.4383  -2.190 0.028530 *  
+utrtActara     2.8785     0.8885   3.240 0.001196 ** 
+utrtAsana      1.3237     0.7781   1.701 0.088906 .  
+utrtBrigade    3.5756     1.0847   3.296 0.000979 ***
+utrtPyganic    1.1325     0.7086   1.598 0.109976    
+utrtEntrust    4.4607     1.6446   2.712 0.006681 ** 
+utrtAdmire     2.8013     0.8492   3.299 0.000971 ***
+utrtExirel    -0.4328     0.9052  -0.478 0.632586    
+utrtGrandevo  -0.5231     0.7487  -0.699 0.484788    
+utrtAltacor   -0.4962     0.8860  -0.560 0.575476    
+
+utd_glht <- glht(md2, linfct = mcp(utrt="Dunnett"))
+summary(utd_glht)
+
+                    Estimate Std. Error z value Pr(>|z|)   
+Actara - UTC == 0     2.8785     0.8885   3.240  0.01047 * 
+Asana - UTC == 0      1.3237     0.7781   1.701  0.52344   
+Brigade - UTC == 0    3.5756     1.0847   3.296  0.00861 **
+Pyganic - UTC == 0    1.1325     0.7086   1.598  0.60389   
+Entrust - UTC == 0    4.4607     1.6446   2.712  0.05545 . 
+Admire - UTC == 0     2.8013     0.8492   3.299  0.00856 **
+Exirel - UTC == 0    -0.4328     0.9052  -0.478  0.99979   
+Grandevo - UTC == 0  -0.5231     0.7487  -0.699  0.99592   
+Altacor - UTC == 0   -0.4962     0.8860  -0.560  0.99925   
+
+
+fieldfixed = glm(Pctdead~utrt, data=tji2, family=binomial)
+fieldrand = glmmPQL(Pctdead ~ utrt, random=~1|Cup.date, family = binomial,
+    data = tji2)
+
+fieldglmer =glmer(Pctdead~utrt + (1|Cup.date), family=binomial, data=tji2)
+glmerpost <-glht(fieldglmer, linfct = mcp(utrt="Dunnett"))
+
+fieldrand24t <- glht(fieldrand, linfct = mcp(utrt="Tukey"))
+fieldrand24d <- glht(fieldrand, linfct = mcp(utrt="Dunnett"))
+fieldfixed24t<- glht(fieldfixed, linfct = mcp(utrt="Tukey"))
+fieldfixed24d<- glht(fieldfixed, linfct = mcp(utrt="Dunnett"))
+tukf.cld24 <-cld(postfixed24t)
+tukf.cld24r <-cld(postrand24t)
+
+
+#Continue with organic comparison
+oc = glm(Pctdead~Chemtype, data=tji, family=binomial)
+                     Estimate Std. Error z value Pr(>|z|)   
+(Intercept)           -0.9598     0.4383  -2.190  0.02853 * 
+ChemtypeConventional   1.6397     0.4995   3.283  0.00103 **
+ChemtypeOrganic        1.0915     0.5304   2.058  0.03961 * 
+
+#Both significantly different from UTC
+oc_glht <- glht(oc, linfct = mcp(Chemtype="Tukey"))
+summary(oc_glht)
+Conventional - Control == 0   1.6397     0.4995   3.283  0.00278 **
+Organic - Control == 0        1.0915     0.5304   2.058  0.09663 . 
+Organic - Conventional == 0  -0.5482     0.3830  -1.431  0.32067   
+
+
+#Organic conventional for lab assay
+orgcon <- read.table("lavmortnovorgconv.txt", header=T, sep="\t")
+oclab = glm(Pctdead24hr~Reg, data=orgcon, family=binomial)
+lab_glht <- glht(oclab, linfct = mcp(Reg="Tukey"))
+
+
+
+
+###Kaplan meier survival curve
+kmtj <- read.table("longevitykapmeiertj.txt", header=T, sep="\t") 
+library(survival)
+dc = survdiff(Surv(Day, Ndead) ~ Product, data=kmtj)
+#Chi square = 15.5, df = 8, P = 0.049
+#shows 45 obs but 46 deleted??!!
+
+survdiff(Surv(Day, Ndead), data=kmtj)
+
+#Plot by time
+kmgraph <-read.table("longevityforgraph.txt", header=T, sep="\t") 
+b = ggplot(kmgraph, aes(x=Day, y=Pctcumalive, group=Product, color=Product)) +
+geom_line(size=1.2) + geom_point(size=2.5) +ylab("Percent Survival") + xlab("Days") +
+theme_bw()
+b1 = b + scale_x_continuous(breaks=c(0,30,60,90,112))
+b2 = b1 + theme(axis.title.y=element_text(size=14)) +
+theme(axis.text.x=element_text(size=14)) + theme(axis.title.x=element_text(size=14)) +
+theme(axis.text.y=element_text(size=14))
+
+#Need to manually code shapes
+
+
+
+#LT50
+y =cbind(kmgraph$Nalive, kmgraph$Ndead)
+model.results=glm(y~kmgraph$Product, binomial)
+library(MASS)
+dose.p(model.results, p=c(0.5))
+
+library(dplyr)
+kmgraph %>% separate(kmgraph, c("Grandevo", "Nalive"))
+
+#Actara
+#50% dead at day 1
+
+#Asana dead/alive
+Asa = data.frame(day=c(0,2,14,20), dead=c(0,1,1,5), alive=c(7,6,5,0))
+y1 = cbind(Asa$alive,Asa$dead)
+model.results=glm(y1~Asa$day, binomial)
+dose.p(model.results, p=c(0.5))
+#Day 15 = day when 50% dead
+
+#Admire
+#needs to be cumulative
+Adm = data.frame(day=c(0,1,2,18,29,39,40,47,57), dead=c(0,1,2,3,5,6,9,10,11),
+ alive=c(11,10,9,8,6,5,2,1,0))
+y2 = cbind(Adm$alive,Adm$dead)
+model.results=glm(y2~Adm$day, binomial)
+dose.p(model.results, p=c(0.5))
+
+##Updated full figure

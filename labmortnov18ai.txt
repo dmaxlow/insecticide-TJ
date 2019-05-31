@@ -1,0 +1,195 @@
+Date	Time start	Chemical	AI	Aiabbrev	Treatment	Interval	Totwasps	1 hr dead	2 hr dead	4 hr dead	6 hr dead	24 hr dead	Pctdead1hr	Pctdead2hr	Pctdead4hr	Pctdead6hr	Pctdead24hr	Pctalive24hr
+12/5/2017	9:20	Actara	Thiamethoxam	Thiam	0.39 mg	overnight	5	4	5	5	5	5	0.8	1	1	1	1	0
+12/5/2017	9:20	Actara	Thiamethoxam	Thiam	0.39 mg	overnight	5	4	5	5	5	5	0.8	1	1	1	1	0
+12/5/2017	9:20	Actara	Thiamethoxam	Thiam	0.39 mg	overnight	5	4	4	4	5	5	0.8	0.8	0.8	1	1	0
+12/5/2017	9:20	Actara	Thiamethoxam	Thiam	0.39 mg	overnight	5	5	5	5	5	5	1	1	1	1	1	0
+12/5/2017	9:20	Actara	Thiamethoxam	Thiam	0.39 mg	overnight	6	4	5	6	6	6	0.666666667	0.833333333	1	1	1	0
+12/20/2017	8:10	Actara	Thiamethoxam	Thiam	high	7 day	6	6	6	6	6	6	1	1	1	1	1	0
+12/20/2017	8:10	Actara	Thiamethoxam	Thiam	high	7 day	7	6	7	7	7	7	0.857142857	1	1	1	1	0
+12/20/2017	8:10	Actara	Thiamethoxam	Thiam	high	7 day	7	4	7	7	7	7	0.571428571	1	1	1	1	0
+12/20/2017	8:10	Actara	Thiamethoxam	Thiam	high	7 day	5	3	5	5	5	5	0.6	1	1	1	1	0
+12/20/2017	8:10	Actara	Thiamethoxam	Thiam	high	7 day	7	4	7	7	7	7	0.571428571	1	1	1	1	0
+10/31/2018	9:00	Actara	Thiamethoxam	Thiam		overnight	5	5	5	5	5	5	1	1	1	1	1	0
+10/31/2018	9:00	Actara	Thiamethoxam	Thiam		overnight	5	4	5	5	5	5	0.8	1	1	1	1	0
+12/22/2017	9:05	Admire	Imidacloprid	Imid	high	2 day	8	6	7	8	8	8	0.75	0.875	1	1	1	0
+12/22/2017	9:05	Admire	Imidacloprid	Imid	high	2 day	8	2	2	3	3	6	0.25	0.25	0.375	0.375	0.75	0.25
+12/22/2017	9:05	Admire	Imidacloprid	Imid	high	2 day	10	9	9	9	9	10	0.9	0.9	0.9	0.9	1	0
+12/21/2017		Admire	Imidacloprid	Imid	high	overnight	7	5	6	7	7	7	0.714285714	0.857142857	1	1	1	0
+12/21/2017		Admire	Imidacloprid	Imid	high	overnight	6	1	1	3	3	6	0.166666667	0.166666667	0.5	0.5	1	0
+12/21/2017		Admire	Imidacloprid	Imid	high	overnight	7	4	5	6	7	7	0.571428571	0.714285714	0.857142857	1	1	0
+12/24/2017	9:10	Admire	Imidacloprid	Imid	low	overnight	8	1	3			7	0.125	0.375			0.875	0.125
+12/24/2017	9:10	Admire	Imidacloprid	Imid	low	overnight	9	1	2			8	0.111111111	0.222222222			0.888888889	0.111111111
+12/24/2017	9:10	Admire	Imidacloprid	Imid	low	overnight	9	0	1			6	0	0.111111111			0.666666667	0.333333333
+12/24/2017	9:10	Admire	Imidacloprid	Imid	low	overnight	10	1	4			8	0.1	0.4			0.8	0.2
+12/24/2017	9:10	Admire	Imidacloprid	Imid	low	overnight	10	1	4			3	0.1	0.4			0.3	0.7
+12/25/2017	8:20	Admire	Imidacloprid	Imid	low	2 Day	12	5	5			12	0.416666667	0.416666667			1	0
+12/25/2017	8:20	Admire	Imidacloprid	Imid	low	2 Day	10	5	6			8	0.5	0.6			0.8	0.2
+12/25/2017	8:20	Admire	Imidacloprid	Imid	low	2 Day	9	1	1			8	0.111111111	0.111111111			0.888888889	0.111111111
+12/25/2017	8:20	Admire	Imidacloprid	Imid	low	2 Day	9	0	0			9	0	0			1	0
+12/25/2017	8:20	Admire	Imidacloprid	Imid	low	2 Day	10	0	0			4	0	0			0.4	0.6
+10/9/2018	9:15	Admire	Imidacloprid	Imid		overnight	6	4	4	4	5	6	0.666666667	0.666666667	0.666666667	0.833333333	1	0
+10/9/2018	9:15	Admire	Imidacloprid	Imid		overnight	3	0	0	0	0	2	0	0	0	0	0.666666667	0.333333333
+10/9/2018	9:15	Admire	Imidacloprid	Imid		overnight	4	0	3	4	4	4	0	0.75	1	1	1	0
+11/20/2017	8:45	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+9/25/2017	8:30	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	1	2	0	0	0	0.2	0.4	0.6
+11/20/2017	8:45	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+11/20/2017	8:45	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+9/18/2017	9:15	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	1	1	1	1	2	0.2	0.2	0.2	0.2	0.4	0.6
+9/18/2017	9:15	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+9/18/2017	9:15	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+9/18/2017	9:15	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	6	0	0	0	1	3	0	0	0	0.166666667	0.5	0.5
+9/18/2017	9:15	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	1	1	1	4	0	0.2	0.2	0.2	0.8	0.2
+9/25/2017	8:30	Altacor	Chlorantraniliprole	Chlor	0.68 mg	overnight	5	0	0	0	0	3	0	0	0	0	0.6	0.4
+10/9/2018	9:15	Altacor	Chlorantraniliprole	Chlor		overnight	6	0	0	0	0	1	0	0	0	0	0.166666667	0.833333333
+10/9/2018	9:15	Altacor	Chlorantraniliprole	Chlor		overnight	4	0	0	0	0	0	0	0	0	0	0	1
+10/9/2018	9:15	Altacor	Chlorantraniliprole	Chlor		overnight	4	1	0	1	2	4	0.25	0	0.25	0.5	1	0
+10/9/2018	9:15	Altacor	Chlorantraniliprole	Chlor		overnight	4	0	0	0	0	1	0	0	0	0	0.25	0.75
+10/9/2018	9:15	Altacor	Chlorantraniliprole	Chlor		overnight	5	0	0	1	1	2	0	0	0.2	0.2	0.4	0.6
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	4	5	5	5	5	0.8	1	1	1	1	0
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	4	5	5	5	5	0.8	1	1	1	1	0
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	6	3	5	6	6	6	0.5	0.833333333	1	1	1	0
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	4	5	5	5	5	0.8	1	1	1	1	0
+5/1/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	3	4	5	5	5	0.6	0.8	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	7.6 fl oz	Immediate	5	4	4	5	5	5	0.8	0.8	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	7.6 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	7.6 fl oz	Immediate	5	2	3	5	5	5	0.4	0.6	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	7.6 fl oz	Immediate	5	3	5	5	5	5	0.6	1	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	7.6 fl oz	Immediate	5	3	4	5	5	5	0.6	0.8	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	4	5	5	5	5	0.8	1	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/2/2017	10:00 AM	Asana	Esfenvalerate	Esfen	12.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	5	3	5	5	5	5	0.6	1	1	1	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	5	4	5	5	5	5	0.8	1	1	1	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	5	5	5	5	5	5	1	1	1	1	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8	7 day	5	2	5	5	5	5	0.4	1	1	1	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8	7 day	5	3	4	4	4	5	0.6	0.8	0.8	0.8	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8	7 day	6	6	6	6	6	6	1	1	1	1	1	0
+5/17/2017	9:00 AM	Asana	Esfenvalerate	Esfen	12.8	7 day	7	5	7	7	7	7	0.714285714	1	1	1	1	0
+5/22/2017	14:15	Asana	Esfenvalerate	Esfen	7.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/22/2017	14:15	Asana	Esfenvalerate	Esfen	7.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/22/2017	14:15	Asana	Esfenvalerate	Esfen	7.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/22/2017	14:15	Asana	Esfenvalerate	Esfen	7.8 fl oz	Immediate	5	5	5	5	5	5	1	1	1	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	6	4	5	5	6	6	0.666666667	0.833333333	0.833333333	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	4	3	3	4	4	4	0.75	0.75	1	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	5	3	4	5	5	5	0.6	0.8	1	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	5	5	5	5	5	5	1	1	1	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	7.8 fl oz	7 day	4	4	4	4	4	4	1	1	1	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	12.8 fl oz	7 day	5	4	5	5	5	5	0.8	1	1	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	12.8 fl oz	7 day	5	4	4	4	5	5	0.8	0.8	0.8	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	12.8 fl oz	7 day	5	3	4	4	5	5	0.6	0.8	0.8	1	1	0
+5/24/2017	11:00	Asana	Esfenvalerate	Esfen	12.8 fl oz	7 day	5	4	4	4	5	5	0.8	0.8	0.8	1	1	0
+12/22/2017	9:05	Brigade	Bifenthrin	Bifen	high	2 day	9	7	9	9	9	9	0.777777778	1	1	1	1	0
+12/22/2017	9:05	Brigade	Bifenthrin	Bifen	high	2 day	9	7	9	9	9	9	0.777777778	1	1	1	1	0
+12/21/2017		Brigade	Bifenthrin	Bifen	high	overnight	7	7	7	7	7	7	1	1	1	1	1	0
+12/21/2017		Brigade	Bifenthrin	Bifen	high	overnight	7	6	7	7	7	7	0.857142857	1	1	1	1	0
+5/1/2017	10:40 AM	UTC	UTC	UTC	control	Immediate	5	0	0	0	0	0	0	0	0	0	0	1
+5/1/2017	10:40 AM	UTC	UTC	UTC	control	Immediate	5	0	1	1	1	1	0	0.2	0.2	0.2	0.2	0.8
+5/2/2017	10:00 AM	UTC	UTC	UTC	control	Immediate	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+5/2/2017	10:00 AM	UTC	UTC	UTC	control	Immediate	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+6/8/2017	10:00	UTC	UTC	UTC	control	Immediate	5	0	0	1	1	2	0	0	0.2	0.2	0.4	0.6
+6/15/2017	9:00	UTC	UTC	UTC	control	Immediate	6	0	0	0	0	2	0	0	0	0	0.333333333	0.666666667
+7/11/2017	8:05	UTC	UTC	UTC	control	overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+5/1/2017	10:40 AM	UTC	UTC	UTC	control	Immediate	5	1	1	1	1	1	0.2	0.2	0.2	0.2	0.2	0.8
+6/15/2017	9:00	UTC	UTC	UTC	control	Immediate	5	0	0	0	0	3	0	0	0	0	0.6	0.4
+11/20/2017	8:45	UTC	UTC	UTC	control	overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+5/17/2017	9:00 AM	UTC	UTC	UTC	control	7 day	5	1	1	1	1	2	0.2	0.2	0.2	0.2	0.4	0.6
+6/8/2017	10:00	UTC	UTC	UTC	control	Immediate	5	0	0	0	0	0	0	0	0	0	0	1
+5/17/2017	9:00 AM	UTC	UTC	UTC	control	7 day	4	0	0	0	0	1	0	0	0	0	0.25	0.75
+5/24/2017	11:00	UTC	UTC	UTC	control	7 day	4	0	0	0	0	0	0	0	0	0	0	1
+9/18/2017	9:15	UTC	UTC	UTC	control	overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+12/5/2017	9:20	UTC	UTC	UTC	control	overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+11/20/2017	8:45	UTC	UTC	UTC	control	overnight	4	0	0	0	0	1	0	0	0	0	0.25	0.75
+6/21/2017	9:30	UTC	UTC	UTC	control	overnight	5	0	0	0	1	2	0	0	0	0.2	0.4	0.6
+9/18/2017	9:15	UTC	UTC	UTC	control	overnight	5	0	0	0	0	0	0	0	0	0	0	1
+6/21/2017	9:30	UTC	UTC	UTC	control	overnight	6	0	0	1	2	4	0	0	0.166666667	0.333333333	0.666666667	0.333333333
+7/6/2017	8:25	UTC	UTC	UTC	control	overnight	5	0	0	0	0	0	0	0	0	0	0	1
+7/6/2017	8:25	UTC	UTC	UTC	control	overnight	6	1	1	1	1	4	0.166666667	0.166666667	0.166666667	0.166666667	0.666666667	0.333333333
+7/11/2017	8:05	UTC	UTC	UTC	control	overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+12/5/2017	9:20	UTC	UTC	UTC	control	overnight	5	0	0	0	1	1	0	0	0	0.2	0.2	0.8
+12/20/2017	8:10	UTC	UTC	UTC	control	7 day	8	0	0	0	0	0	0	0	0	0	0	1
+12/22/2017	9:05	UTC	UTC	UTC	control	2 day	7	0	0	0	0	2	0	0	0	0	0.285714286	0.714285714
+12/21/2017		UTC	UTC	UTC	control	overnight	5	0	0	0	0	0	0	0	0	0	0	1
+12/24/2017	9:10	UTC	UTC	UTC	control	overnight	9	0	0			1	0	0			0.111111111	0.888888889
+8/24/2018	9:30	UTC	UTC	UTC		overnight	5	0	0	0	0		0	0	0	0	0	1
+8/24/2018	9:30	UTC	UTC	UTC		overnight	5	0	0	0	1	1	0	0	0	0.2	0.2	0.8
+9/13/2018	9:05	UTC	UTC	UTC		overnight	7	0	0	0	0	0	0	0	0	0	0	1
+9/13/2018	9:05	UTC	UTC	UTC		overnight	6	0	0	0	0	1	0	0	0	0	0.166666667	0.833333333
+10/9/2018	9:15	UTC	UTC	UTC		overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+10/31/2018	9:00	UTC	UTC	UTC		overnight	5	0	0	0	0	0	0	0	0	0	0	1
+10/31/2018	9:00	UTC	UTC	UTC		overnight	6	0	0	0	0	1	0	0	0	0	0.166666667	0.833333333
+6/21/2017	9:30	Entrust	Spinosad	Spino	High	overnight	5	0	1	4	5	5	0	0.2	0.8	1	1	0
+6/21/2017	9:30	Entrust	Spinosad	Spino	High	overnight	4	2	2	4	4	4	0.5	0.5	1	1	1	0
+6/21/2017	9:30	Entrust	Spinosad	Spino	High	overnight	6	0	0	3	4	6	0	0	0.5	0.666666667	1	0
+6/21/2017	9:30	Entrust	Spinosad	Spino	High	overnight	5	1	2	5	5	5	0.2	0.4	1	1	1	0
+6/21/2017	9:30	Entrust	Spinosad	Spino	High	overnight	5	0	1	2	3	5	0	0.2	0.4	0.6	1	0
+6/21/2017	9:30	Entrust	Spinosad	Spino	High	overnight	8	4	5	7	7	8	0.5	0.625	0.875	0.875	1	0
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	5	0	1	3	3	5	0	0.2	0.6	0.6	1	0
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	5	0	1	2	5	5	0	0.2	0.4	1	1	0
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	5	0	0	3	4	5	0	0	0.6	0.8	1	0
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	6	0	0	3	5	6	0	0	0.5	0.833333333	1	0
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	5	0	0	0	0	0	0	0	0	0	0	1
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	6	1	2	3	5	6	0.166666667	0.333333333	0.5	0.833333333	1	0
+7/6/2017	8:25	Entrust	Spinosad	Spino	high	overnight	6	0	0	2	3	6	0	0	0.333333333	0.5	1	0
+7/11/2017	8:05	Entrust	Spinosad	Spino	high	overnight	5	0	0	1	4	5	0	0	0.2	0.8	1	0
+7/11/2017	8:05	Entrust	Spinosad	Spino	high	overnight	5	0	3	3	3	5	0	0.6	0.6	0.6	1	0
+7/11/2017	8:05	Entrust	Spinosad	Spino	high	overnight	5	0	0	0	2	5	0	0	0	0.4	1	0
+7/11/2017	8:05	Entrust	Spinosad	Spino	high	overnight	6	0	0	1	3	5	0	0	0.166666667	0.5	0.833333333	0.166666667
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	1 fl oz	Immediate	5	1	1	2	2	2	0.2	0.2	0.4	0.4	0.4	0.6
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	1	1	1	1	2	0.2	0.2	0.2	0.2	0.4	0.6
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	1 fl oz	Immediate	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	3	4	4	4	4	0.6	0.8	0.8	0.8	0.8	0.2
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	4	1	3	3	3	4	0.25	0.75	0.75	0.75	1	0
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	6	3	4	4	6	6	0.5	0.666666667	0.666666667	1	1	0
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	2	2	2	4	5	0.4	0.4	0.4	0.8	1	0
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	2	3	3	3	3	0.4	0.6	0.6	0.6	0.6	0.4
+6/8/2017	10:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	2	2	2	2	5	0.4	0.4	0.4	0.4	1	0
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	5	4	5	5	5	5	0.8	1	1	1	1	0
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	2.5 fl oz	Immediate	6	4	4	5	6	6	0.666666667	0.666666667	0.833333333	1	1	0
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	1 fl oz	Immediate	4	2	3	3	4	4	0.5	0.75	0.75	1	1	0
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	1 fl oz	Immediate	6	1	2	6	6	6	0.166666667	0.333333333	1	1	1	0
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	1 fl oz	Immediate	5	2	5	5	5	5	0.4	1	1	1	1	0
+6/15/2017	9:00	Exirel	Cyantraniliprole	Cyant	1 fl oz	Immediate	5	3	4	4	4	4	0.6	0.8	0.8	0.8	0.8	0.2
+6/21/2017	9:30	Exirel	Cyantraniliprole	Cyant	1 fl oz	overnight	5	4	4	5	5	5	0.8	0.8	1	1	1	0
+6/21/2017	9:30	Exirel	Cyantraniliprole	Cyant	1 fl oz	overnight	6	0	0	2	3	5	0	0	0.333333333	0.5	0.833333333	0.166666667
+6/21/2017	9:30	Exirel	Cyantraniliprole	Cyant	1 fl oz	overnight	5	4	5	5	5	5	0.8	1	1	1	1	0
+6/21/2017	9:30	Exirel	Cyantraniliprole	Cyant	1 fl oz	overnight	5	2	4	5	5	5	0.4	0.8	1	1	1	0
+8/24/2018	9:30	Grandevo	Chromobacterium	Chrom		overnight	5	5	2	4	4	5	1	0.4	0.8	0.8	1	0
+8/24/2018	9:30	Grandevo	Chromobacterium	Chrom		overnight	6	6	6	6	6	5	1	1	1	1	0.833333333	0.166666667
+8/24/2018	9:30	Grandevo	Chromobacterium	Chrom		overnight	5	2	5	5	5	5	0.4	1	1	1	1	0
+8/24/2018	9:30	Grandevo	Chromobacterium	Chrom		overnight	5	4	4	4	5	5	0.8	0.8	0.8	1	1	0
+8/24/2018	9:30	Grandevo	Chromobacterium	Chrom		overnight	5	0	0	0	0	2	0	0	0	0	0.4	0.6
+9/13/2018	9:05	Grandevo	Chromobacterium	Chrom		overnight	6	0	0	0	4	6	0	0	0	0.666666667	1	0
+9/13/2018	9:05	Grandevo	Chromobacterium	Chrom		overnight	6	0	0	0	3	3	0	0	0	0.5	0.5	0.5
+9/13/2018	9:05	Grandevo	Chromobacterium	Chrom		overnight	5	1	0	0	4	5	0.2	0	0	0.8	1	0
+9/13/2018	9:05	Grandevo	Chromobacterium	Chrom		overnight	5	0	0	0	0	5	0	0	0	0	1	0
+9/13/2018	9:05	Grandevo	Chromobacterium	Chrom		overnight	6	0	0	0	3	6	0	0	0	0.5	1	0
+10/9/2018	9:15	Grandevo	Chromobacterium	Chrom		overnight	4	0	0	0	0	1	0	0	0	0	0.25	0.75
+10/9/2018	9:15	Grandevo	Chromobacterium	Chrom		overnight	5	0	2	3	3	3	0	0.4	0.6	0.6	0.6	0.4
+10/31/2018	9:00	Grandevo	Chromobacterium	Chrom		overnight	5	0	1	1	2	4	0	0.2	0.2	0.4	0.8	0.2
+10/31/2018	9:00	Grandevo	Chromobacterium	Chrom		overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+10/31/2018	9:00	Grandevo	Chromobacterium	Chrom		overnight	5	0	0	0	1	3	0	0	0	0.2	0.6	0.4
+10/31/2018	9:00	Grandevo	Chromobacterium	Chrom		overnight	5	0	2	2	2	2	0	0.4	0.4	0.4	0.4	0.6
+10/31/2018	9:00	Grandevo	Chromobacterium	Chrom		overnight	5	0	0	0	0	1	0	0	0	0	0.2	0.8
+8/24/2018	9:30	Pyganic	Pyrethrins	Pyret		overnight	5	5	5	5	5	5	1	1	1	1	1	0
+8/24/2018	9:30	Pyganic	Pyrethrins	Pyret		overnight	5	5	5	5	5	5	1	1	1	1	1	0
+8/24/2018	9:30	Pyganic	Pyrethrins	Pyret		overnight	5	5	5	5	5	5	1	1	1	1	1	0
+8/24/2018	9:30	Pyganic	Pyrethrins	Pyret		overnight	5	5	5	5	5	5	1	1	1	1	1	0
+8/24/2018	9:30	Pyganic	Pyrethrins	Pyret		overnight	4	4	4	4	4	4	1	1	1	1	1	0
+9/13/2018	9:05	Pyganic	Pyrethrins	Pyret		overnight	5	4	4	4	4	5	0.8	0.8	0.8	0.8	1	0
+9/13/2018	9:05	Pyganic	Pyrethrins	Pyret		overnight	7	3	3	3	7	7	0.428571429	0.428571429	0.428571429	1	1	0
+9/13/2018	9:05	Pyganic	Pyrethrins	Pyret		overnight	6	3	4	0	6	6	0.5	0.666666667	0	1	1	0
+9/13/2018	9:05	Pyganic	Pyrethrins	Pyret		overnight	6	5	5	5	6	6	0.833333333	0.833333333	0.833333333	1	1	0
+9/13/2018	9:05	Pyganic	Pyrethrins	Pyret		overnight	6	4	4	4	6	6	0.666666667	0.666666667	0.666666667	1	1	0
+10/31/2018	9:00	Pyganic	Pyrethrins	Pyret		overnight	6	5	6	6	6	6	0.833333333	1	1	1	1	0
+10/31/2018	9:00	Pyganic	Pyrethrins	Pyret		overnight	5	2	5	5	5	5	0.4	1	1	1	1	0
+10/31/2018	9:00	Pyganic	Pyrethrins	Pyret		overnight	5	3	5	5	5	5	0.6	1	1	1	1	0
+10/31/2018	9:00	Pyganic	Pyrethrins	Pyret		overnight	5	5	5	5	5	5	1	1	1	1	1	0
+12/22/2017	9:05	Brigade	Bifenthrin	Bifen	high	2 day	9	7	9	9	9	9	0.777777778	1	1	1	1	0
+12/22/2017	9:05	Brigade	Bifenthrin	Bifen	high	2 day	9	7	9	9	9	9	0.777777778	1	1	1	1	0
+12/21/2017		Brigade	Bifenthrin	Bifen	high	overnight	7	7	7	7	7	7	1	1	1	1	1	0
+12/21/2017		Brigade	Bifenthrin	Bifen	high	overnight	7	6	7	7	7	7	0.857142857	1	1	1	1	0
+12/21/2017		Brigade	Bifenthrin	Bifen	high	overnight	7	7	7	7	7	7	1	1	1	1	1	0
+12/21/2017		Brigade	Bifenthrin	Bifen	high	overnight	7	6	7	7	7	7	0.857142857	1	1	1	1	0

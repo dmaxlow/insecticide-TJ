@@ -1,0 +1,191 @@
+##############FIELD WORK
+
+#Load libraries
+library(ggplot2)
+library(lme4)
+library(Rmisc)
+library(gplots)
+
+tji <- read.table("fieldsurv18.txt", header=T, sep="\t")
+
+#Make utc the default
+utrt <- factor(Treatment, levels=c("UTC", "Actara", "Asana", "Brigade", "Pyganic","Entrust", "Admire", 
+ "Exirel", "Grandevo", "Altacor"))
+
+tji2 = cbind(utrt, tji)
+
+#Different ways of analyzing 24 hr mortality
+
+#Model with fixed effects only
+fieldfixed = glm(Pctdead~utrt, data=tji2, family=binomial)
+#Shows UTC with lower mortality than - 
+##(P<0.05) Actara, Brigade, Entrust, Admire
+##(P<0.10) Asana
+ 
+#Glmmpql vs glmer #https://stackoverflow.com/questions/32038355/r-glmm-glmer-vs-glmmpql
+
+
+#GLMMPQL Model treating sample date as random effect
+fieldrand = glmmPQL(Pctdead ~ utrt, random=~1|Cup.date, family = binomial,
+    data = tji2)
+#Shows UTC with lower mortality than - 
+##(P<0.05) Actara, Asana, Brigade, Entrust, Admire
+##(P<0.10) Pyganic
+
+#GLMER Model treating sample date as random effect
+fieldglmer =glmer(Pctdead~utrt + (1|Cup.date), family=binomial, data=tji2)
+#Model conversion error
+#Shows UTC with lower mortality than - 
+##(P<0.05) Actara, Brigade, Admire
+#(P<0.10) Pyganic
+###Seems incorrect, as Entrust mortality is near 100%.
+
+glmerpost <-glht(fieldglmer, linfct = mcp(utrt="Dunnett"))
+
+#Post-hoc tests
+fieldrand24t <- glht(fieldrand, linfct = mcp(utrt="Tukey"))
+fieldrand24d <- glht(fieldrand, linfct = mcp(utrt="Dunnett"))
+fieldfixed24t<- glht(fieldfixed, linfct = mcp(utrt="Tukey"))
+fieldfixed24d<- glht(fieldfixed, linfct = mcp(utrt="Dunnett"))
+tukf.cld24 <-cld(postfixed24t)
+tukf.cld24r <-cld(postrand24t)
+
+#agricolae
+tji <- read.table("fieldsurv18.txt", header=T, sep="\t")
+library(agricolae)
+fm <- summarySE(tji, measurevar="Pctdead", groupvars=c("Treatment"))
+attach(tji)
+ta <- factor(Treatment, levels = c("Entrust", "Brigade", "Actara", "Admire",
+ "Asana", "Pyganic","Exirel","Altacor", "Grandevo", "UTC"))
+
+model<-aov(Pctdead~Treatment, data=tji)
+out <- HSD.test(model,"Treatment", group=TRUE,console=TRUE,
+main="T japonicus mortality")
+
+###Mortality for sluggish wasps
+
+fslug <- summarySE(tji, measurevar="Pctslug", groupvars=c("Treatment"))
+#Asana and exirel with mean Pct sluggish wasps > 10%
+
+#GLMMPQL Model treating sample date as random effect
+fieldslugrand = glmmPQL(Pctslug ~ utrt, random=~1|Cup.date, family = binomial,
+    data = tji2)
+#Treat site as random effect
+fieldslugrand1 = glmmPQL(Pctslug ~ utrt, random=~1|Site, family = binomial,
+    data = tji2)
+
+#Shows N/S differences but model took multiple iterations
+Anova(fieldslugrand)
+#Yet above test shows a significant difference. P = 0.04. Chi sq = 17.4
+slug24t <- glht(fieldslugrand, linfct = mcp(utrt="Tukey"))
+
+#Linear hypotheses
+                          Estimate Std. Error z value Pr(>|z|)  
+#Grandevo - Asana == 0   -2.219e+00  7.837e-01  -2.832    0.090 .
+
+slugsiterand <- glht(fieldslugrand1, linfct = mcp(utrt="Tukey"))
+Grandevo - Asana == 0   -2.307e+00  7.448e-01  -3.097    0.043 *
+
+#Fixed model
+slugfixed = glm(Pctslug~utrt, data=tji2, family=binomial)
+#N/S differences
+
+#Mortality for dead and sluggish wasps
+fds <- summarySE(tji, measurevar="Pctslugdead", groupvars=c("Treatment"))
+slugdeadrandf = glmmPQL(Pctslugdead ~ utrt, random=~1|Cup.date, family = binomial,
+    data = tji2)
+#UTC with lower mortality than 
+#(P<0.05) - Actara, Asana, Brigade, Pyganic, Entrust, Admire
+
+modelfd<-aov(Pctslugdead~Treatment, data=tji)
+fdslug <- HSD.test(modelfd,"Treatment", group=TRUE,console=TRUE,
+main="T japonicus dead or sluggish")
+
+###Comparison of organic vs conventional products
+oc = glm(Pctdead~Chemtype, data=tji, family=binomial)
+                     Estimate Std. Error z value Pr(>|z|)   
+(Intercept)           -0.9598     0.4383  -2.190  0.02853 * 
+ChemtypeConventional   1.6397     0.4995   3.283  0.00103 **
+ChemtypeOrganic        1.0915     0.5304   2.058  0.03961 * 
+
+#Both significantly different from UTC
+oc_glht <- glht(oc, linfct = mcp(Chemtype="Tukey"))
+summary(oc_glht)
+Conventional - Control == 0   1.6397     0.4995   3.283  0.00278 **
+Organic - Control == 0        1.0915     0.5304   2.058  0.09663 . 
+Organic - Conventional == 0  -0.5482     0.3830  -1.431  0.32067 
+
+####FIGURES#######
+
+fm <- summarySE(tji, measurevar="Pctdead", groupvars=c("Treatment"))
+
+#reorder insecticides for figure
+fma <- factor(fm$Treatment, levels = c("Entrust", "Brigade", "Actara", "Admire",
+ "Asana", "Pyganic","Exirel","Altacor", "Grandevo", "UTC"))
+
+#Figure with standard error of mean (SEM)
+fizab<- ggplot(fm, aes(x=fma, y = Pctdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion Mortality") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead-se, ymax=Pctdead+se))+
+theme(axis.title.x=element_blank())
+fiz1a = fizab + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2a = fiz1a + theme(axis.text.y = element_text(size=12))
+fiz3a = fiz2a + theme(legend.text = element_text(size = 14, face = "bold"))
+
+#Create figure with confidence intervals instead of SEM
+fizabc<- ggplot(fm, aes(x=fma, y = Pctdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead-ci, ymax=Pctdead+ci))+
+theme(axis.title.x=element_blank())
+fiz1ac = fizabc + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2ac = fiz1ac + theme(axis.text.y = element_text(size=12))
+fiz3ac = fiz2ac + theme(legend.text = element_text(size = 14, face = "bold"))
+
+##figure with proportion sluggish or dead
+fmd <- factor(fds$Treatment, levels = c("Entrust", "Brigade", "Actara", "Admire",
+ "Asana", "Pyganic","Exirel","Altacor", "Grandevo", "UTC"))
+fizabc<- ggplot(fds, aes(x=fmd, y = Pctslugdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Prop. dead or sluggish") + theme_bw() +
+geom_errorbar(aes(ymin=Pctslugdead-ci, ymax=Pctslugdead+ci))+
+theme(axis.title.x=element_blank())
+fiz1ac = fizabc + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2ac = fiz1ac + theme(axis.text.y = element_text(size=12))
+fiz3ac = fiz2ac + theme(legend.text = element_text(size = 14, face = "bold"))
+
+tiff("Fieldslugdeadci.tiff",res=300, width=6, height=6, units='in')
+fiz3ac
+dev.off()
+
+
+###April 2019 updated figure
+tjiai <- read.table("fieldsurv18ai.txt", header=T, sep="\t")
+fmai <- summarySE(tjiai, measurevar="Pctdead", groupvars=c("AI"))
+attach(tjiai)
+tai <- factor(AI, levels = c("Spinosad", "Bifenthrin", "Thiamethoxam", "Imidacloprid",
+ "Esfenvalerate", "Pyrethrins","Cyantraniliprole","Chlorantraniliprole", 
+"Chromobacterium", "UTC"))
+taia = cbind(tai, tjiai)
+fm <- summarySE(taia, measurevar="Pctdead", groupvars=c("tai"))
+
+#Create figure with confidence intervals instead of SEM
+fizabc<- ggplot(fm, aes(x=tai, y = Pctdead)) + geom_bar(stat="identity", fill="grey") + 
+ylab("Proportion dead") + theme_bw() +
+geom_errorbar(aes(ymin=Pctdead-se, ymax=Pctdead+se))+
+theme(axis.title.x=element_blank())
+fiz1ac = fizabc + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 16))
+fiz2ac = fiz1ac + theme(axis.text.y = element_text(size=12))
+fiz3ac = fiz2ac + theme(legend.text = element_text(size = 14, face = "bold"))
+
+fieldfin = fiz3ac + annotate("text", x=1, y=1.05, label="a")+
+annotate("text", x=2, y=1.05, label="ab")+
+annotate("text", x=3, y=0.98, label="abc")+
+annotate("text", x=4, y=0.98, label="abc")+
+annotate("text", x=5, y=0.75, label="bcd")+
+annotate("text", x=6, y=0.68, label="cde")+
+annotate("text", x=7, y=0.37, label="def")+
+annotate("text", x=8, y=0.38, label="def")+
+annotate("text", x=9, y=0.38, label="f")+
+annotate("text", x=10, y=0.42, label="def")
+tiff("Fig2field.tiff",res=300, width=6, height=6, units='in')
+fieldfin
+dev.off()
